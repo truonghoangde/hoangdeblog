@@ -1,0 +1,95 @@
+
+#codepro-blogFriends::-webkit-scrollbar {width: 5px;}
+#codepro-blogFriends::-webkit-scrollbar-thumb {
+    background: #484848;
+    border-radius: 100px;
+}
+#codepro-blogFriends::-webkit-scrollbar-thumb:active {background: #777;}
+#codepro-blogFriends {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    max-height: 500px;
+    overflow: auto
+}
+.codepro-blogFriends {
+    margin: 0;
+    padding: 0
+}
+.codepro-blogFriends li {
+    margin: 0;
+    padding: 0;
+    line-height: normal;
+    display: block;
+    float: left;
+    text-align: center;
+    width: 50%
+}
+.codepro-blogFriends a {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    display: block;
+    margin: 0 8px 8px 0;
+    padding: 7px 15px;
+    font: 400 13px 'Noto Sans', sans-serif;
+    -webkit-transition: .3s;
+    letter-spacing: -.35px;
+    -moz-transition: .3s;
+    -o-transition: .3s;
+    color: inherit;
+    border: 1px solid rgb(230, 230, 230);
+    border-radius: 3px
+}
+.codepro-blogFriends a:hover {border-color: var(--link-bg);}
+.codepro-quydinhFriends {
+    margin: 0;
+    padding: 0;
+    line-height: normal;
+    display: block;
+    float: left;
+    background-color: #f8f9fa;
+    font-size: 13px;
+    margin-top: -1px;
+    margin: 0 8px 8px 0;
+    padding: 7px 15px;
+    border-radius: 3px
+}
+.darkMode .codepro-quydinhFriends {
+    margin: 0;
+    padding: 0;
+    line-height: normal;
+    display: block;
+    float: left;
+    background-color: #484848;
+    font-size: 13px;
+    margin-top: -1px;
+    padding: 7px 15px;
+    margin: 0 8px 8px 0;
+    border-radius: 3px
+}
+.darkMode .codepro-quydinhFriends a {color: #fff;}
+.rung {animation: code-pro-rung-lac 2s ease infinite;}   
+@-webkit-keyframes code-pro-rung-lac {
+    0% {
+        -webkit-transform: rotate(0) scale(1) skew(1deg);
+    }
+    10% {
+        -webkit-transform: rotate(-25deg) scale(1) skew(1deg);
+        }
+    20% {
+        -webkit-transform: rotate(25deg) scale(1) skew(1deg);
+    }
+    30% {
+        -webkit-transform: rotate(-25deg) scale(1) skew(1deg);
+    }
+    40% {
+        -webkit-transform: rotate(25deg) scale(1) skew(1deg);
+    }
+    50% {
+        -webkit-transform: rotate(0) scale(1) skew(1deg);
+    }
+    100% {
+        -webkit-transform: rotate(0) scale(1) skew(1deg);
+    }
+}

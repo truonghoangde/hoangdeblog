@@ -1,0 +1,159 @@
+﻿// Code HTML cho nhận xét mới
+
+<b:tag class='notif-show' href='javascript:;' name='a'>
+    <b:tag class='fas fa-comments' name='i'/>
+    <b:tag class='sindicat' name='span'/>
+</b:tag>
+
+//Code HTML cho nhận xét mới
+/* --------Phân tử đầu tiên-------- */
+.notif-show {
+    color: #1767d0!important;
+    font-size: 16px;
+    font-weight: normal;
+    width: auto;
+    padding: 0;
+    cursor: pointer;
+    backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    border-radius: 2px;
+    transition: all .6s;
+}
+.notif-show:hover{animation:rubberBand 1s}
+
+.notif-show .sindicat {
+    display: block;
+    font-size: 16px;
+    background: #ff3333;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 8px;
+}
+    .sindicat {
+    animation: sindicat 0.5s ease infinite;
+    }
+
+/* -------Phân tử thứ hai-------- */
+
+
+#disqus-notif {
+    position: fixed;
+    background: #fff;
+    z-index: 999;
+    width: 25%;
+    top: 0;
+    right: -769px;
+    bottom: 0;
+    transition: all .5s;
+}
+#disqus-notif.active {
+    right: 0;
+}
+
+    .header-1 {
+    background: #1a73e8;
+    color: #fff;
+    height: auto;
+    padding: 10px;
+    overflow: hidden;
+    }
+    .header-1 h4 {
+    font-size: 18px;
+    float: left;
+    color: #fff;
+    line-height: 2em;
+    }
+    #disqus-notif .close-1 {
+    font-size: 35px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 0.8em;
+    position: relative;
+    float: right;
+    right: -20px;
+    }
+    #disqus-notif .close-1:hover .close-text{
+        visibility:visible;
+        opacity:1;
+        -webkit-transform:translate3d(-50px,0,0);
+        transform:translate3d(-50px,0,0)
+    }
+        #disqus-notif .close-text {
+            display: inline-block;
+            font-weight: 700;
+            font-size: 14px;
+            position: relative;
+            right: 15px;
+            top: -7px;
+            visibility: hidden;
+            opacity: 0;
+            transition: all .5s;
+        }
+    #RecentComments {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    height: 100%;
+    }
+        .nxmoi{color: #ccc;}
+        .nxmoi li{margin:0;padding:10px;}
+        .nxmoi li:hover:before{background:#F48FB1}
+        .nxmoi span a{color:#1a73e8;font-weight:600;transition: color .3s;}
+        .nxmoi span a:hover{color:#111;transition: color .3s;}
+        .nxmoi span {color:#000}
+
+        #disqus-notif.active #RecentComments li.dsq-widget-item{animation:bounceInLeft 1.5s}
+
+
+@media screen and (max-width: 1366px){#disqus-notif {width: 35%;}}
+@media screen and (max-width:768px){#disqus-notif{width:100%}#disqus-notif .close-1{display:block;text-align:left;margin:0;padding:0 25px;position:relative;font-size:35px;font-weight:700;color:#fff;float:right;}#disqus-notif .close-text{display:none}}
+/* Animation */
+@-webkit-keyframes sindicat {from{transform:scale(1)}10%{transform:scale(1.2)}}
+@keyframes rubberBand{from{-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}30%{-webkit-transform:scale3d(1.25,0.75,1);transform:scale3d(1.25,0.75,1)}40%{-webkit-transform:scale3d(0.75,1.25,1);transform:scale3d(0.75,1.25,1)}50%{-webkit-transform:scale3d(1.15,0.85,1);transform:scale3d(1.15,0.85,1)}65%{-webkit-transform:scale3d(.95,1.05,1);transform:scale3d(.95,1.05,1)}75%{-webkit-transform:scale3d(1.05,.95,1);transform:scale3d(1.05,.95,1)}to{-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}}
+@keyframes bounceInLeft{from,60%,75%,90%,to{-webkit-animation-timing-function:cubic-bezier(0.215,0.610,0.355,1.000);animation-timing-function:cubic-bezier(0.215,0.610,0.355,1.000)}0%{opacity:0;-webkit-transform:translate3d(-3000px,0,0);transform:translate3d(-3000px,0,0)}60%{opacity:1;-webkit-transform:translate3d(25px,0,0);transform:translate3d(25px,0,0)}75%{-webkit-transform:translate3d(-10px,0,0);transform:translate3d(-10px,0,0)}90%{-webkit-transform:translate3d(5px,0,0);transform:translate3d(5px,0,0)}to{-webkit-transform:none;transform:none}}
+
+// Code đặt trong tiện ích HTML/JavaScript
+
+<div id="disqus-notif" class="">
+    <div class="header-1">
+        <h4>Thảo Luận</h4>
+        <a class="close-1" href="javascript:;" title="Close">×<span class="close-text">Close</span></a>
+    </div>
+    <div class="dsq-widget" id="RecentComments">
+        <script>
+            var sl_nhanxet = 20,
+                kt_nhanxet = 70;
+            // Recent Comment
+            function nhanxetmoi(json) {
+                var entry, commurl, commsum;
+                document.write('<ul class="nxmoi">');
+                for (var i = 0; i < sl_nhanxet; i++) {
+                    entry = json.feed.entry[i];
+                    if (i == json.feed.entry.length) break;
+                    for (var k = 0; k < entry.link.length; k++) {
+                        if (entry.link[k].rel == 'alternate') {
+                            commurl = entry.link[k].href;
+                            break;
+                        }
+                    }
+                    commsum = ("content" in entry) ? entry.content.$t : ("summary" in entry) ? entry.summary.$t : "";
+                    commsum = commsum.replace(/<.*?>/g, "");
+                    if (commsum.length > kt_nhanxet) commsum = commsum.substring(0, kt_nhanxet) + "...";
+                    document.write('<li><span><a href="' + commurl + '" rel="nofollow">' + entry.author[0].name.$t + ':</a></span> <span>' + commsum + '</span></li>');
+                }
+                document.write('</ul>');
+            }
+            $("#disqus-notif").parent(".widget").attr("style","display:none");
+        </script>
+        <script src="/feeds/comments/summary?alt=json-in-script&amp;callback=nhanxetmoi"></script>
+    </div>
+</div>
+
+// Code JavaScript cho nhận xét mới
+
+$(function(){$(".notif-show").on("click",function(){$("#disqus-notif").addClass("active").focus()});$(".close-1").on("click",function(){$("#disqus-notif").removeClass("active")})});
